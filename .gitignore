@@ -1,0 +1,10 @@
+# Everything ignored by default
+*
+
+# Tracked files
+!README.md
+!COMPREHENSIVE_AGENT_ENGINEERING_GUIDE_2026.md
+!COMPREHENSIVE_AGENT_ENGINEERING_GUIDE_2026.pdf
+!CONTRIBUTING.md
+!LICENSE
+!.gitignore
